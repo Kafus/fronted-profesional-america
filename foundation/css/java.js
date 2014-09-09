@@ -1,7 +1,3 @@
-$(document).ready(function(){
-	// Javascript en un archivo
-	console.log('Esto es javascript en un archivo local');
-});
 $(document).foundation({
   orbit: {
       animation: 'slide', // Sets the type of animation used for transitioning between slides, can also be 'fade'
@@ -38,4 +34,20 @@ $(document).foundation({
       before_slide_change: noop, // Execute a function before the slide changes
       after_slide_change: noop // Execute a function after the slide changes
   }
+});
+$("#featured1").on("ready.fndtn.orbit", function(event) {
+  console.info("ready");
+});
+$("#featured1").on("before-slide-change.fndtn.orbit", function(event) {
+  console.info("before slide change");
+});
+$("#featured1").on("after-slide-change.fndtn.orbit", function(event, orbit) {
+  console.info("after slide change");
+  console.info("slide " + orbit.slide_number + " of " + orbit.total_slides);
+});
+$("#featured1").on("timer-started.fndtn.orbit", function(event, orbit) {
+  console.info("timer started");
+});
+$("#featured1").on("timer-stopped.fndtn.orbit", function(event, orbit) {
+  console.info("timer stopped");
 });
